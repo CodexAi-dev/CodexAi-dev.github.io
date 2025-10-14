@@ -2991,3 +2991,1183 @@ section {
 .footer-bottom-links span {
     color: var(--color-silver);
 }
+
+/* ===== ADVANCED MOBILE RESPONSIVE ===== */
+
+/* Extra Large Devices */
+@media (max-width: 1400px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .hero-title {
+        font-size: 56px;
+    }
+
+    .section-title {
+        font-size: 44px;
+    }
+}
+
+/* Large Devices (Desktops) */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+
+    /* Navigation */
+    .nav-container {
+        max-width: 100%;
+        padding: 0 25px;
+    }
+
+    /* Hero */
+    .hero-content {
+        gap: 60px;
+    }
+
+    .hero-title {
+        font-size: 52px;
+    }
+
+    .hero-subtitle {
+        font-size: 22px;
+    }
+
+    .hero-description {
+        font-size: 17px;
+    }
+
+    .profile-card {
+        max-width: 400px;
+    }
+
+    /* About */
+    .about-content {
+        gap: 60px;
+    }
+
+    /* Skills */
+    .skills-categories {
+        grid-template-columns: 1fr;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* Projects */
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card.featured {
+        grid-column: span 1;
+    }
+
+    /* SiteLab */
+    .sitelab-content {
+        gap: 60px;
+    }
+
+    .sitelab-metrics {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+        gap: 40px;
+    }
+}
+
+/* Medium Devices (Tablets) */
+@media (max-width: 992px) {
+    .container {
+        max-width: 720px;
+    }
+
+    /* Navigation */
+    .nav-container {
+        padding: 0 20px;
+        height: 70px;
+    }
+
+    .logo-text {
+        font-size: 24px;
+    }
+
+    .logo-dot {
+        font-size: 30px;
+    }
+
+    .mobile-toggle {
+        display: block;
+        z-index: 1001;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 40px 30px;
+        gap: 0;
+        transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: var(--shadow-xl);
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.3s ease;
+    }
+
+    .nav-menu.active li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .nav-menu.active li:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-menu.active li:nth-child(2) {
+        transition-delay: 0.15s;
+    }
+
+    .nav-menu.active li:nth-child(3) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-menu.active li:nth-child(4) {
+        transition-delay: 0.25s;
+    }
+
+    .nav-menu.active li:nth-child(5) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-menu.active li:nth-child(6) {
+        transition-delay: 0.35s;
+    }
+
+    .nav-menu.active li:nth-child(7) {
+        transition-delay: 0.4s;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 16px 20px;
+        text-align: left;
+        font-size: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-cta {
+        margin-left: 0 !important;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    /* Overlay for mobile menu */
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    /* Hero */
+    .hero {
+        padding-top: 110px;
+        min-height: auto;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+    }
+
+    .hero-text {
+        order: 1;
+    }
+
+    .hero-image {
+        order: 2;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+
+    .hero-title {
+        font-size: 46px;
+    }
+
+    .hero-subtitle {
+        font-size: 20px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+        margin: 0 auto 32px;
+    }
+
+    .hero-badge {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 600px;
+        margin: 0 auto 40px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .badge-float {
+        font-size: 13px;
+        padding: 10px 16px;
+    }
+
+    .badge-1,
+    .badge-2,
+    .badge-3 {
+        position: absolute;
+    }
+
+    /* About */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .about-img-wrapper {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .experience-badge {
+        bottom: 20px;
+        right: 20px;
+        padding: 20px 28px;
+    }
+
+    .experience-badge h3 {
+        font-size: 36px;
+    }
+
+    .about-heading {
+        font-size: 28px;
+    }
+
+    .about-text p {
+        font-size: 16px;
+    }
+
+    .about-actions {
+        flex-wrap: wrap;
+    }
+
+    /* Experience */
+    .timeline::before {
+        left: 30px;
+    }
+
+    .timeline-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .timeline-content h3 {
+        font-size: 20px;
+    }
+
+    /* Projects */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: 0 auto 60px;
+    }
+
+    /* SiteLab */
+    .sitelab-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+    }
+
+    .sitelab-logo {
+        justify-content: center;
+    }
+
+    .sitelab-metrics {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 700px;
+        margin: 0 auto 40px;
+    }
+
+    .sitelab-services {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: 0 auto 40px;
+        text-align: left;
+    }
+
+    .sitelab-cards {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto 24px;
+    }
+
+    .sitelab-cta {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    /* Contact */
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .contact-form-section {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+
+    .footer-about {
+        grid-column: 1 / -1;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .footer-logo {
+        justify-content: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+/* Small Devices (Landscape Phones) */
+@media (max-width: 768px) {
+
+    /* Sections */
+    section {
+        padding: 70px 20px;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    .section-subtitle {
+        font-size: 16px;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 100px 20px 70px;
+    }
+
+    .hero-title {
+        font-size: 38px;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+    }
+
+    .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .stat-box {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .profile-card {
+        max-width: 350px;
+    }
+
+    .badge-1 {
+        top: 20px;
+        right: 10px;
+    }
+
+    .badge-2 {
+        bottom: 120px;
+        right: -10px;
+    }
+
+    .badge-3 {
+        top: 140px;
+        left: -10px;
+    }
+
+    /* Timeline */
+    .timeline::before {
+        left: 22px;
+    }
+
+    .timeline-item {
+        gap: 24px;
+    }
+
+    .timeline-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .timeline-content {
+        padding: 24px;
+    }
+
+    .timeline-content h3 {
+        font-size: 18px;
+    }
+
+    /* Skills */
+    .skill-category-card {
+        padding: 32px 24px;
+    }
+
+    .skill-cat-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+
+    /* SiteLab */
+    .sitelab-info h2 {
+        font-size: 36px;
+    }
+
+    .sitelab-metrics {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+    }
+
+    .metric-box h3 {
+        font-size: 36px;
+    }
+
+    /* Form */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form-section {
+        padding: 32px 24px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 50px 20px 30px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .footer-about {
+        text-align: center;
+    }
+
+    .footer-links,
+    .footer-contact {
+        text-align: center;
+    }
+
+    .footer-links ul,
+    .footer-contact ul {
+        align-items: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-bottom-links {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .footer-bottom-links span {
+        display: none;
+    }
+}
+
+/* Extra Small Devices (Portrait Phones) */
+@media (max-width: 576px) {
+
+    /* Sections */
+    section {
+        padding: 60px 16px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .section-label {
+        font-size: 12px;
+        padding: 6px 16px;
+    }
+
+    .section-title {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .section-subtitle {
+        font-size: 15px;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 13px 28px;
+        font-size: 15px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-large {
+        padding: 15px 32px;
+        font-size: 16px;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 90px 16px 60px;
+    }
+
+    .hero-title {
+        font-size: 32px;
+        line-height: 1.15;
+    }
+
+    .hero-subtitle {
+        font-size: 17px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .hero-badge {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    .stat-box {
+        padding: 14px 18px;
+    }
+
+    .stat-box i {
+        font-size: 28px;
+    }
+
+    .stat-box h3 {
+        font-size: 24px;
+    }
+
+    .stat-box p {
+        font-size: 12px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .social-links {
+        gap: 12px;
+    }
+
+    .social-links a {
+        width: 46px;
+        height: 46px;
+        font-size: 20px;
+    }
+
+    .profile-card {
+        max-width: 300px;
+    }
+
+    .profile-status {
+        bottom: 20px;
+        left: 20px;
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+
+    .badge-float {
+        font-size: 11px;
+        padding: 8px 12px;
+    }
+
+    .badge-1,
+    .badge-2,
+    .badge-3 {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        margin-top: 12px;
+    }
+
+    /* About */
+    .experience-badge {
+        padding: 18px 24px;
+    }
+
+    .experience-badge h3 {
+        font-size: 32px;
+    }
+
+    .experience-badge p {
+        font-size: 13px;
+    }
+
+    .about-heading {
+        font-size: 26px;
+    }
+
+    .about-text p {
+        font-size: 15px;
+    }
+
+    .highlight-item i {
+        font-size: 22px;
+    }
+
+    .highlight-item h4 {
+        font-size: 16px;
+    }
+
+    .highlight-item p {
+        font-size: 14px;
+    }
+
+    .about-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* Timeline */
+    .timeline::before {
+        left: 18px;
+    }
+
+    .timeline-item {
+        gap: 20px;
+    }
+
+    .timeline-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .timeline-content {
+        padding: 20px;
+    }
+
+    .timeline-date {
+        font-size: 12px;
+        padding: 5px 14px;
+    }
+
+    .timeline-content h3 {
+        font-size: 17px;
+    }
+
+    .timeline-content h4 {
+        font-size: 15px;
+    }
+
+    .timeline-content p {
+        font-size: 14px;
+    }
+
+    .timeline-tags span {
+        font-size: 11px;
+        padding: 5px 12px;
+    }
+
+    /* Skills */
+    .skill-category-card {
+        padding: 28px 20px;
+    }
+
+    .skill-cat-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 26px;
+    }
+
+    .skill-cat-header h3 {
+        font-size: 19px;
+    }
+
+    .skill-info {
+        font-size: 14px;
+    }
+
+    .skill-bar {
+        height: 8px;
+    }
+
+    /* Projects */
+    .project-image {
+        height: 220px;
+    }
+
+    .project-content {
+        padding: 22px;
+    }
+
+    .project-category {
+        font-size: 11px;
+        padding: 5px 14px;
+    }
+
+    .project-content h3 {
+        font-size: 19px;
+    }
+
+    .project-content p {
+        font-size: 14px;
+    }
+
+    .project-tags span {
+        font-size: 11px;
+        padding: 5px 12px;
+    }
+
+    .project-view,
+    .project-code {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+
+    /* SiteLab */
+    .sitelab-badge {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    .sitelab-logo {
+        font-size: 28px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .sitelab-logo i {
+        font-size: 40px;
+    }
+
+    .sitelab-info h2 {
+        font-size: 30px;
+    }
+
+    .sitelab-subtitle {
+        font-size: 16px;
+    }
+
+    .metric-box {
+        padding: 20px;
+    }
+
+    .metric-box h3 {
+        font-size: 32px;
+    }
+
+    .metric-box p {
+        font-size: 13px;
+    }
+
+    .services-heading {
+        font-size: 20px;
+    }
+
+    .service-item i {
+        font-size: 18px;
+    }
+
+    .service-item h4 {
+        font-size: 15px;
+    }
+
+    .service-item p {
+        font-size: 13px;
+    }
+
+    .sitelab-feature-card {
+        padding: 20px;
+    }
+
+    .feature-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 24px;
+    }
+
+    .sitelab-feature-card h4 {
+        font-size: 17px;
+    }
+
+    .sitelab-feature-card p {
+        font-size: 13px;
+    }
+
+    .sitelab-testimonial {
+        padding: 24px;
+    }
+
+    .sitelab-testimonial .testimonial-content i {
+        font-size: 28px;
+    }
+
+    .sitelab-testimonial .testimonial-content p {
+        font-size: 15px;
+    }
+
+    .sitelab-cta {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+        padding: 24px;
+    }
+
+    .testimonial-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .testimonial-avatar {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto;
+    }
+
+    .testimonial-info h4 {
+        font-size: 17px;
+    }
+
+    .testimonial-info p {
+        font-size: 13px;
+    }
+
+    .testimonial-rating {
+        justify-content: center;
+    }
+
+    .testimonial-rating i {
+        font-size: 15px;
+    }
+
+    .testimonial-text {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .testimonial-text i {
+        position: relative;
+        display: block;
+        text-align: center;
+        margin: 0 auto 12px;
+    }
+
+    .testimonial-text p {
+        font-size: 15px;
+    }
+
+    /* Contact */
+    .contact-info-section h3 {
+        font-size: 24px;
+    }
+
+    .contact-info-section>p {
+        font-size: 15px;
+    }
+
+    .contact-detail-item {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .contact-icon {
+        margin: 0 auto 12px;
+    }
+
+    .contact-detail-item h4 {
+        font-size: 15px;
+    }
+
+    .contact-detail-item a,
+    .contact-detail-item p {
+        font-size: 14px;
+    }
+
+    .contact-social h4 {
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .social-links-contact {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .social-links-contact a {
+        width: 46px;
+        height: 46px;
+        font-size: 20px;
+    }
+
+    .contact-form-section {
+        padding: 28px 20px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+
+    .form-group textarea {
+        min-height: 100px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 45px 16px 25px;
+    }
+
+    .footer-logo {
+        font-size: 24px;
+    }
+
+    .footer-about p {
+        font-size: 14px;
+    }
+
+    .footer-social a {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+
+    .footer-links h4,
+    .footer-contact h4 {
+        font-size: 17px;
+    }
+
+    .footer-links a,
+    .footer-contact li {
+        font-size: 14px;
+    }
+
+    .footer-bottom p,
+    .footer-bottom-links a {
+        font-size: 13px;
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-float {
+        width: 52px;
+        height: 52px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 26px;
+    }
+}
+
+/* Ultra Small Devices */
+@media (max-width: 400px) {
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .profile-card {
+        max-width: 260px;
+    }
+
+    .sitelab-info h2 {
+        font-size: 26px;
+    }
+
+    .about-heading {
+        font-size: 24px;
+    }
+
+    .whatsapp-float {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+        bottom: 16px;
+        right: 16px;
+    }
+}
+
+/* Landscape Orientation (Phones) */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 100px 20px 60px;
+    }
+
+    .hero-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .profile-card {
+        max-width: 300px;
+    }
+
+    section {
+        padding: 60px 20px;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+
+    .btn,
+    .social-links a,
+    .project-view,
+    .project-code,
+    .contact-detail-item,
+    .testimonial-card,
+    .skill-category-card {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    .nav-menu a {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+
+    input,
+    textarea,
+    select {
+        font-size: 16px;
+        /* Prevents zoom on iOS */
+    }
+}
+
+/* High Resolution Displays */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
+    .project-image img,
+    .about-img-wrapper img,
+    .profile-image img,
+    .testimonial-avatar img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .hero-shape,
+    .sitelab-shape,
+    .badge-float {
+        animation: none !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+
+    .navbar,
+    .whatsapp-float,
+    .hero-buttons,
+    .social-links,
+    .contact-form-section,
+    .footer-social {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    section {
+        page-break-inside: avoid;
+    }
+}
