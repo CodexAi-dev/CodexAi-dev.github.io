@@ -3246,6 +3246,7 @@ section {
     .badge-2,
     .badge-3 {
         position: absolute;
+        max-width: 100px;
     }
 
     /* About */
