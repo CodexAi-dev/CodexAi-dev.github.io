@@ -1,39 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dilshan Janith — Portfolio</title>
-  <style>
-    :root { color-scheme: light dark; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Helvetica, Arial; margin: 0; }
-    header { padding: 56px 20px; text-align: center; background: #0f172a; color: #e2e8f0; }
-    main { max-width: 900px; margin: 0 auto; padding: 24px; }
-    a { color: #0ea5e9; text-decoration: none; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-    .card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; background: #fff; }
-  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header>
-    <h1>Dilshan Janith</h1>
-    <p>Software Developer • Portfolio</p>
-    <p><a href="https://github.com/CodexAi-dev" target="_blank" rel="noreferrer">GitHub</a></p>
-  </header>
-  <main>
-    <h2>Projects</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Project One</h3>
-        <p>Short description of your project.</p>
-        <p><a href="#">Demo</a> · <a href="#">Code</a></p>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">DJ<span class="logo-dot">.</span></div>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#sitelab">SiteLab</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          Hi, I'm <span class="highlight">Dilshan Janith</span>
+        </h1>
+        <p class="hero-subtitle">Software Developer • Web Developer • Graphic Designer • IT Solutions</p>
+        <p class="hero-description">
+          Crafting digital experiences through code and design. Founder of SiteLab Solutions.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/CodexAi-dev" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+          <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+        </div>
       </div>
-      <div class="card">
-        <h3>Project Two</h3>
-        <p>Short description of your project.</p>
-        <p><a href="#">Demo</a> · <a href="#">Code</a></p>
+      <div class="hero-image">
+        <div class="profile-card">
+          <div class="profile-avatar">
+            <i class="bi bi-person-circle"></i>
+          </div>
+          <div class="floating-icons">
+            <i class="bi bi-code-slash float-icon"></i>
+            <i class="bi bi-palette float-icon"></i>
+            <i class="bi bi-laptop float-icon"></i>
+          </div>
+        </div>
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>I'm a passionate software developer with expertise spanning multiple disciplines. From crafting responsive
+            websites to designing compelling graphics and providing comprehensive IT solutions, I bring a holistic
+            approach to every project.</p>
+          <p>As the founder of <strong>SiteLab Solutions</strong>, I lead a team dedicated to delivering cutting-edge
+            web development services that help businesses establish and grow their digital presence.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-item">
+            <i class="bi bi-award"></i>
+            <h3>50+</h3>
+            <p>Projects Completed</p>
+          </div>
+          <div class="stat-item">
+            <i class="bi bi-people"></i>
+            <h3>30+</h3>
+            <p>Happy Clients</p>
+          </div>
+          <div class="stat-item">
+            <i class="bi bi-trophy"></i>
+            <h3>5+</h3>
+            <p>Years Experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-icon">
+            <i class="bi bi-code-square"></i>
+          </div>
+          <h3>Software Development</h3>
+          <ul>
+            <li>Python</li>
+            <li>JavaScript / TypeScript</li>
+            <li>Java</li>
+            <li>C++</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <div class="skill-icon">
+            <i class="bi bi-globe"></i>
+          </div>
+          <h3>Web Development</h3>
+          <ul>
+            <li>React / Next.js</li>
+            <li>HTML5 / CSS3</li>
+            <li>Node.js / Express</li>
+            <li>PHP / Laravel</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <div class="skill-icon">
+            <i class="bi bi-brush"></i>
+          </div>
+          <h3>Graphic Design</h3>
+          <ul>
+            <li>Adobe Photoshop</li>
+            <li>Illustrator</li>
+            <li>Figma / Adobe XD</li>
+            <li>UI/UX Design</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <div class="skill-icon">
+            <i class="bi bi-tools"></i>
+          </div>
+          <h3>IT Solutions</h3>
+          <ul>
+            <li>System Administration</li>
+            <li>Network Setup</li>
+            <li>Cloud Services</li>
+            <li>Technical Support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-image">
+            <i class="bi bi-laptop"></i>
+          </div>
+          <div class="project-content">
+            <h3>E-Commerce Platform</h3>
+            <p>A full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.</p>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MongoDB</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link"><i class="bi bi-box-arrow-up-right"></i> Demo</a>
+              <a href="#" class="project-link"><i class="bi bi-github"></i> Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <i class="bi bi-phone"></i>
+          </div>
+          <div class="project-content">
+            <h3>Mobile App UI/UX</h3>
+            <p>Modern mobile application design with intuitive user interface and seamless user experience.</p>
+            <div class="project-tags">
+              <span class="tag">Figma</span>
+              <span class="tag">React Native</span>
+              <span class="tag">Design</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link"><i class="bi bi-box-arrow-up-right"></i> Demo</a>
+              <a href="#" class="project-link"><i class="bi bi-github"></i> Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <i class="bi bi-bar-chart"></i>
+          </div>
+          <div class="project-content">
+            <h3>Analytics Dashboard</h3>
+            <p>Real-time data visualization dashboard with interactive charts and comprehensive reporting tools.</p>
+            <div class="project-tags">
+              <span class="tag">Vue.js</span>
+              <span class="tag">D3.js</span>
+              <span class="tag">API</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link"><i class="bi bi-box-arrow-up-right"></i> Demo</a>
+              <a href="#" class="project-link"><i class="bi bi-github"></i> Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <i class="bi bi-images"></i>
+          </div>
+          <div class="project-content">
+            <h3>Brand Identity Design</h3>
+            <p>Complete brand identity package including logo design, color palette, and brand guidelines.</p>
+            <div class="project-tags">
+              <span class="tag">Illustrator</span>
+              <span class="tag">Branding</span>
+              <span class="tag">Graphics</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link"><i class="bi bi-box-arrow-up-right"></i> View</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SiteLab Solutions Section -->
+  <section id="sitelab" class="sitelab">
+    <div class="container">
+      <div class="sitelab-content">
+        <div class="sitelab-info">
+          <div class="sitelab-logo">
+            <i class="bi bi-hexagon-fill"></i>
+            <span>SiteLab Solutions</span>
+          </div>
+          <h2>Professional Web Development Services</h2>
+          <p>SiteLab Solutions is my web development business dedicated to creating powerful, scalable, and beautiful
+            websites for businesses of all sizes. We specialize in custom web applications, e-commerce platforms, and
+            digital solutions that drive results.</p>
+
+          <div class="sitelab-services">
+            <div class="service-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>Custom Website Development</span>
+            </div>
+            <div class="service-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>E-Commerce Solutions</span>
+            </div>
+            <div class="service-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>Responsive Design</span>
+            </div>
+            <div class="service-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>SEO Optimization</span>
+            </div>
+            <div class="service-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>Maintenance & Support</span>
+            </div>
+            <div class="service-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>Cloud Hosting</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="btn btn-primary">Start Your Project</a>
+        </div>
+        <div class="sitelab-visual">
+          <div class="sitelab-card">
+            <i class="bi bi-rocket-takeoff"></i>
+            <h3>Fast Delivery</h3>
+            <p>Quick turnaround without compromising quality</p>
+          </div>
+          <div class="sitelab-card">
+            <i class="bi bi-shield-check"></i>
+            <h3>Reliable Solutions</h3>
+            <p>Tested and secure web applications</p>
+          </div>
+          <div class="sitelab-card">
+            <i class="bi bi-heart"></i>
+            <h3>Client-Focused</h3>
+            <p>Your success is our priority</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="bi bi-envelope-fill"></i>
+            <div>
+              <h3>Email</h3>
+              <p>dilshan@sitelab.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="bi bi-telephone-fill"></i>
+            <div>
+              <h3>Phone</h3>
+              <p>+94 XX XXX XXXX</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <div>
+              <h3>Location</h3>
+              <p>Negombo, Sri Lanka</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form">
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Your Email" required />
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Subject" required />
+          </div>
+          <div class="form-group">
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Dilshan Janith. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://github.com/CodexAi-dev" target="_blank" rel="noreferrer"><i class="bi bi-github"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+        <a href="#"><i class="bi bi-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
 </body>
+
 </html>
