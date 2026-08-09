@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================================
+   Design tokens
+
+   Near-monochrome warm neutrals. The accent is a burnt sienna used sparingly —
+   marks, active states, focus — never for large fills. Primary buttons invert
+   to ink instead, which reads as print rather than "landing page".
+   Every text/background pair clears WCAG AA in both themes.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  --bg: #f6f5f2; /* warm paper */
+  --bg-subtle: #eeece7;
+  --surface: #ffffff;
+  --border-soft: #dfdbd3;
+  --ink: #171614; /* 17.5:1 on --bg */
+  --muted: #63605a; /* 5.8:1  on --bg */
+  --accent: #b4451f; /* 5.1:1  on --bg */
+  --accent-soft: #f7eae4;
+  --accent-fg: #ffffff;
+  --shadow-card: 0 1px 2px rgb(23 22 20 / 0.05);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --bg: #131211;
+  --bg-subtle: #1a1917;
+  --surface: #1c1b19;
+  --border-soft: #2c2a27;
+  --ink: #edeae4; /* 15.7:1 on --bg */
+  --muted: #94908a; /* 6.1:1  on --bg */
+  --accent: #e8825a; /* 7.0:1  on --bg */
+  --accent-soft: #2a1a13;
+  --accent-fg: #2a1108;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-surface: var(--surface);
+  --color-line: var(--border-soft);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-fg: var(--accent-fg);
+
+  --font-sans: var(--font-sans-plex), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono-plex), ui-monospace, "SFMono-Regular", monospace;
+
+  --shadow-card: var(--shadow-card);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* clears the fixed header when jumping to an anchor (h-14 → h-16 at sm) */
+    scroll-padding-top: 4.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      scroll-padding-top: 5.5rem;
+    }
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* `clip` rather than `hidden` so position: sticky keeps working */
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background-color: var(--ink);
+    color: var(--bg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 1px;
+  }
+
+  /* Headings share the body face at a heavier weight — no display serif.
+     The hierarchy comes from size and tracking, not a second typeface. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    letter-spacing: -0.021em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a,
+  p,
+  h1,
+  h2,
+  h3,
+  h4 {
+    overflow-wrap: break-word;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ==========================================================================
+   Composites
+   ========================================================================== */
+
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 74rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .shell {
+      padding-inline: 1.75rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  /* Monospace metadata: section numbers, years, tags, field labels.
+     This is the site's signature — it does the work an accent colour
+     would otherwise have to do. */
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Scroll reveal — shorter travel and duration than before, so it reads as
+   settling into place rather than sliding in.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+      opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  [data-reveal="shown"] {
+    opacity: 1;
+    transform: none;
+  }
+}
