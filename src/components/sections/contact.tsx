@@ -1,24 +1,28 @@
 "use client";
 
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
+import { useState, type FormEvent } from "react";
 import { AlertCircle, Check, Send } from "lucide-react";
 
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import { Reveal } from "@/components/reveal";
 import { Section, SectionHeading } from "@/components/ui";
-import { sendMessage } from "@/app/actions";
 import { site } from "@/content/site";
 import { cn } from "@/lib/cn";
-import { initialContactState } from "@/lib/contact";
+import {
+  contactSchema,
+  initialContactState,
+  toFieldErrors,
+  type ContactState,
+} from "@/lib/contact";
+
+/** Inlined at build time by Next; supplied by the deploy workflow. */
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
 const fieldClass =
   "w-full rounded-md border border-line bg-bg px-3 py-2.5 text-sm text-ink " +
   "placeholder:text-muted/60 transition-colors focus:border-ink focus:outline-none";
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-
+function SubmitButton({ pending }: { pending: boolean }) {
   return (
     <button
       type="submit"
@@ -58,9 +62,89 @@ const channels = [
 const socialIcons = { github: GithubIcon, linkedin: LinkedinIcon } as const;
 
 export function Contact() {
-  const [state, formAction] = useActionState(sendMessage, initialContactState);
+  const [state, setState] = useState<ContactState>(initialContactState);
+  const [pending, setPending] = useState(false);
 
   const errorFor = (field: string) => state.fieldErrors[field];
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    // Honeypot: real people never fill a hidden field. Pretend it worked.
+    if (data.get("company")) {
+      setState({ status: "success", message: "Thanks — your message is on its way.", fieldErrors: {} });
+      return;
+    }
+
+    const parsed = contactSchema.safeParse({
+      name: data.get("name"),
+      email: data.get("email"),
+      phone: data.get("phone") || undefined,
+      subject: data.get("subject"),
+      service: data.get("service") || undefined,
+      message: data.get("message"),
+    });
+
+    if (!parsed.success) {
+      setState({
+        status: "error",
+        message: "Please check the highlighted fields.",
+        fieldErrors: toFieldErrors(parsed.error),
+      });
+      return;
+    }
+
+    // Not configured yet — say so plainly rather than swallowing the enquiry.
+    if (!WEB3FORMS_KEY) {
+      setState({
+        status: "error",
+        message: `The contact form isn't connected yet. Please email ${site.email} directly.`,
+        fieldErrors: {},
+      });
+      return;
+    }
+
+    setPending(true);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        // Spread first so the derived fields below win over the raw values.
+        body: JSON.stringify({
+          ...parsed.data,
+          access_key: WEB3FORMS_KEY,
+          from_name: parsed.data.name,
+          subject: `Portfolio enquiry — ${parsed.data.subject}`,
+        }),
+      });
+      const result = (await response.json()) as { success?: boolean };
+
+      if (result.success) {
+        form.reset();
+        setState({
+          status: "success",
+          message: "Thanks — I've got your message and will reply within a day.",
+          fieldErrors: {},
+        });
+      } else {
+        setState({
+          status: "error",
+          message: `Something went wrong sending that. Please email ${site.email} directly.`,
+          fieldErrors: {},
+        });
+      }
+    } catch {
+      setState({
+        status: "error",
+        message: `Something went wrong sending that. Please email ${site.email} directly.`,
+        fieldErrors: {},
+      });
+    } finally {
+      setPending(false);
+    }
+  }
 
   return (
     <Section id="contact" tinted>
@@ -120,7 +204,7 @@ export function Contact() {
 
         <Reveal delay={80}>
           <form
-            action={formAction}
+            onSubmit={handleSubmit}
             className="relative overflow-hidden rounded-lg border border-line bg-surface p-5 sm:p-6"
             noValidate
           >
@@ -208,7 +292,7 @@ export function Contact() {
             </div>
 
             <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
-              <SubmitButton />
+              <SubmitButton pending={pending} />
               <p className="text-xs text-muted">
                 Or email{" "}
                 <a

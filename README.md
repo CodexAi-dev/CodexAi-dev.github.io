@@ -68,24 +68,36 @@ Mono** (400/500) for metadata. Both self-hosted at build time by `next/font`.
 To swap the typeface, change the two imports at the top of `src/app/layout.tsx` —
 nothing else references a font by name.
 
+## Hosting: GitHub Pages (static export)
+
+`next.config.ts` sets `output: "export"`, so `npm run build` writes a fully
+static site to `./out`. That constrains what the app may use:
+
+- **No server actions or API routes** — there is no Node runtime on Pages
+- **No image optimisation** — `images.unoptimized` is on, originals are served
+- **No response headers** — a `headers()` block would be silently ignored
+
+Two files in `public/` matter and must not be deleted:
+
+| File | Why |
+| ---- | --- |
+| `.nojekyll` | Without it Pages runs Jekyll, which ignores any directory starting with `_` — and Next puts everything in `_next/`. The site would load with no CSS or JS. |
+| `CNAME` | Holds `dilshanjanith.me`. Pages reads this on every deploy; remove it and the custom domain is dropped. |
+
+Deployment runs from `.github/workflows/deploy.yml` on every push to `main`
+(Settings → Pages → Source must be **GitHub Actions**, not a branch).
+
 ## Contact form
 
-The form posts to a server action in `src/app/actions.ts`, which sends mail via
-[Resend](https://resend.com). Copy `.env.example` to `.env.local` and fill in:
+Static hosting means no backend, so the form posts straight from the browser to
+[Web3Forms](https://web3forms.com). Get a free access key by entering your email
+on their site — no account required.
 
-```
-RESEND_API_KEY=
-CONTACT_FROM_EMAIL=   # an address on a domain verified in Resend
-CONTACT_TO_EMAIL=     # where enquiries land
-```
+- **Locally:** copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_WEB3FORMS_KEY`
+- **In CI:** add it as the repo secret `WEB3FORMS_KEY` (Settings → Secrets and
+  variables → Actions). The workflow maps it to the `NEXT_PUBLIC_` variable at
+  build time.
 
-Until those are set the form validates normally but returns a message asking the
-visitor to email directly — it never silently drops an enquiry.
-
-## Deploying to Vercel
-
-1. Push this repo to GitHub.
-2. Import it at [vercel.com/new](https://vercel.com/new) — the framework is detected automatically.
-3. Add the three environment variables above under **Settings → Environment Variables**.
-4. Add `dilshanjanith.me` under **Settings → Domains** and follow the DNS instructions.
-5. Turn off GitHub Pages for this repo (**Settings → Pages → Source: None**) so the two don't fight over the domain.
+Until the key is set the form validates normally but tells the visitor to email
+directly — it never silently drops an enquiry. Validation is client-side only;
+Web3Forms does spam filtering on its end.
